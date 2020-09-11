@@ -142,33 +142,157 @@
 // }
 // chamaFruta()
 
-(() => {
-    console.log('exemplo de callback');
+// (() => {
+//     console.log('exemplo de callback');
 
-    getLista(10, (err, result) => {
-        if (err) {
-            console.error('excedeu a lista');
-            return;
+//     getLista(10, (err, result) => {
+//         if (err) {
+//             console.error('excedeu a lista');
+//             return;
+//         }
+
+//         console.log(result);
+//     })
+
+// })();
+
+// function getLista(qtd, callback) {
+//     const lista = [];
+
+//     for (let i = 0; i < qtd; i++) {
+//         lista.push(i);
+//     }
+
+//     if (lista.length > 5) {
+//         return callback(new Error('limite excedido de lista'), null);
+//     }
+
+//     return callback(null, lista);
+// }
+
+// funcao vai chamar soma 
+// 3 paramentros - a-b-callback . se a soma de a + b > 5 tem que estourar erro. retornar erro para o callback. 
+// funcao que vai chamar soma vai chamar invoca soma. 
+
+// function soma(a, b, callback) {
+//     const soma = a + b;
+
+//     if (soma > 5) {
+//         return callback(new Error('Valor excedido'), null); 
+//     }
+
+//     return callback(null, soma);
+// }
+
+// function invocaSoma() {
+//     soma(1, 300, (err, result) => {
+//         if (err) {
+//             console.error(err.message);
+//             return;
+//         }
+
+//         console.log(result);
+//     })
+
+// }
+// invocaSoma();
+
+// converter dolar em real
+// 5,32 dolar. 
+
+//função com 2 parametros que vai se chamar cambio.
+//variavel que vai alterar é real
+//1º real, 2º dolar
+// 2º parametro vai vir preenchido = 5,32
+//formula: real/dolar
+// regra: valor do real tem que ser maior que zero. 
+// // se for <=0 tem que dar erro
+// // criar outra função (invocaCambio)
+
+// function cambio(real, callback, dolar = 5.32) {
+//     if(real <= 0) {
+//         return callback(newError('Valor do real menor que zero'), null);
+//     }
+
+//     const conversao = real / dolar;
+//     const formatacao = conversao.toFixed(2);
+//     const resultado = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL'  }).format(formatacao);
+//     return callback(null, resultado);
+// }
+
+// function invocaCambio() {
+//     cambio(10, (err, result) => {
+//         if (err) {
+//             console.error(err.message);
+//             return;
+//         }
+
+//         console.log(result);
+//     })
+// }
+// invocaCambio();
+
+// HOMEWORK:
+// funcao IMC, recebe peso e altura. 
+//https://centrodeobesidadeediabetes.org.br/tudo-sobre-obesidade/calculadora-de-imc/
+// IMC = Peso ÷ (Altura × Altura)
+// IMC = Peso ÷ (Altura²)
+// FAZER EM PROMISE TAMBÉM
+
+//## Promise
+
+// (() => {
+//     console.log('exemplo de promise');
+
+//     getLista(5)
+//         .then((result) => {
+//             return console.log(result);
+//         })
+//         .catch((err) => {
+//             return console.error(err);
+//         })
+
+// })();
+
+// function getLista(qtd) {
+//     return new Promise((resolve, reject) => {
+//         const lista = [];
+
+//         for (let i = 0; i < qtd; i++) {
+//             lista.push(i);
+//         }
+
+//         if (lista.length > 5) {
+//             return reject(new Error('limite excedido de lista'));
+//         }
+
+//         return resolve(lista);
+//     })
+// }
+
+function calculaSoma(a,b) {
+    return new Promise((resolve, reject) => {
+        const soma = a + b;
+
+        if (soma > 5) {
+            return reject(new Error('Valor excedido'));
         }
 
-        console.log(result);
+        return resolve(soma);
     })
 
-})();
-
-function getLista(qtd, callback) {
-    const lista = [];
-
-    for (let i = 0; i < qtd; i++) {
-        lista.push(i);
-    }
-
-    if (lista.length > 5) {
-        return callback(new Error('limite excedido de lista'), null);
-    }
-
-    return callback(null, lista);
 }
 
+(() => {
+    console.log('exemplo de promise');
 
+    calculaSoma(1, 2)
+        .then((result) => {
+            return console.log(result);
+        })
+        .catch((err) => {
+            return console.error(err);
+        })
+
+})();
 
