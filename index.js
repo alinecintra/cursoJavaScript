@@ -142,6 +142,9 @@
 // }
 // chamaFruta()
 
+
+//## CALLBACK
+
 // (() => {
 //     console.log('exemplo de callback');
 
@@ -270,29 +273,61 @@
 //     })
 // }
 
-function calculaSoma(a,b) {
-    return new Promise((resolve, reject) => {
-        const soma = a + b;
+// 
+////////////////////////////////////////////////////////////////////////
+// fazer uma função utilizando CALLBACK e uma com PROMISE
 
-        if (soma > 5) {
-            return reject(new Error('Valor excedido'));
-        }
+// funcao IMC, recebe peso e altura. 
+//https://centrodeobesidadeediabetes.org.br/tudo-sobre-obesidade/calculadora-de-imc/
+// IMC = Peso ÷ (Altura × Altura) ou IMC = Peso ÷ (Altura²)
 
-        return resolve(soma);
-    })
 
-}
+//CALLBACK
+// function imc(altura, peso, callback) {
+//     if(altura <= 0 || peso <= 0) {
+//         return callback(newError('Valor informado deve ser maior que zero'))
+//     }
 
+//     const calculoImc = peso / (altura * altura);
+//     const formatacao = calculoImc.toFixed(2);
+//     const resultado = new Intl.NumberFormat('pt-BR', { style: 'decimal', decimal: 'BRL'  }).format(formatacao);
+//     return callback(null, resultado);
+// }
+
+
+// function calculaImc() {
+//     imc(1.58, 55, (err, result) => {
+//         if (err) {
+//             console.error(err.message);
+//             return;
+//         }
+
+//         console.log(result);
+//     })    
+// }
+// calculaImc();
+
+## Promise
 (() => {
-    console.log('exemplo de promise');
-
-    calculaSoma(1, 2)
+    calculaImc(1.58, 55)
         .then((result) => {
             return console.log(result);
         })
         .catch((err) => {
             return console.error(err);
         })
-
 })();
+
+function calculaImc(altura, peso) {
+    return new Promise((resolve, reject) => {
+    const imc = peso / (altura * altura);
+        
+        if(altura <= 0 || peso <= 0) {
+            return reject(new Error('Valor informado deve ser maior que zero'));
+        }
+
+        return resolve(imc);
+            
+    })
+}
 
