@@ -281,53 +281,160 @@
 //https://centrodeobesidadeediabetes.org.br/tudo-sobre-obesidade/calculadora-de-imc/
 // IMC = Peso ÷ (Altura × Altura) ou IMC = Peso ÷ (Altura²)
 
+//criar 3 constantes. peso, nome e altura.
+// cada constante deve ser o nome de uma pessoa
+// vai passar essas pessoas como parÂmetros
+// ex: aline.altura
+//const carroVelho = {
+//     cor: 'vermelho',
+//     status: 'quebrado'
+// } 
+const aline = {
+    peso: 55,
+    altura: 1.58
+}
+
+const antonio = {
+    peso: 75,
+    altura: 1.75
+}
+
+const maria = {
+    peso: 40,
+    altura: 1.30
+}
 
 //CALLBACK
 // function imc(altura, peso, callback) {
-//     if(altura <= 0 || peso <= 0) {
-//         return callback(newError('Valor informado deve ser maior que zero'))
+//     if (altura <= 0 || peso <= 0) {
+//         return callback(new Error('Valor informado deve ser maior que zero'))
 //     }
 
 //     const calculoImc = peso / (altura * altura);
 //     const formatacao = calculoImc.toFixed(2);
-//     const resultado = new Intl.NumberFormat('pt-BR', { style: 'decimal', decimal: 'BRL'  }).format(formatacao);
+//     const resultado = new Intl.NumberFormat('pt-BR', { style: 'decimal', decimal: 'BRL' }).format(formatacao);
 //     return callback(null, resultado);
 // }
 
 
 // function calculaImc() {
-//     imc(1.58, 55, (err, result) => {
-//         if (err) {
-//             console.error(err.message);
+//     imc(aline.altura, aline.peso, (errAline, resultAline) => {
+//         if (errAline) {
+//             console.error(errAline.message);
 //             return;
 //         }
+//         imc(antonio.altura, antonio.peso, (errAntonio, resultAntonio) => {
+//             if (errAntonio) {
+//                 console.error(errAntonio.message);
+//                 return;
+//             }
+//             imc(maria.altura, maria.peso, (errMaria, resultMaria) => {
+//                 if (errMaria) {
+//                     console.error(errMaria.message);
+//                     return;
+//                 }
+//                 console.log('aline:', resultAline);
+//                 console.log('antonio:', resultAntonio);
+//                 console.log('maria', resultMaria);
+//             })
+//         })
 
-//         console.log(result);
-//     })    
+//     })
 // }
 // calculaImc();
 
-## Promise
-(() => {
-    calculaImc(1.58, 55)
-        .then((result) => {
-            return console.log(result);
-        })
-        .catch((err) => {
-            return console.error(err);
-        })
-})();
 
-function calculaImc(altura, peso) {
-    return new Promise((resolve, reject) => {
-    const imc = peso / (altura * altura);
-        
-        if(altura <= 0 || peso <= 0) {
-            return reject(new Error('Valor informado deve ser maior que zero'));
-        }
 
-        return resolve(imc);
-            
-    })
-}
+//## Promise //função imediata //Immediately-invoked Function Expression
+
+// function calculaImc(altura, peso) {
+//     return new Promise((resolve, reject) => {
+//         if (altura <= 0 || peso <= 0) {
+//             return reject(new Error('Valor informado deve ser maior que zero'));
+//         }
+
+//         const imc = peso / (altura * altura);
+
+//         return resolve(imc);
+
+//     })
+// }
+
+// (() => { 
+//     calculaImc(aline.altura, aline.peso)
+//         .then((resultAline) => {
+//             console.log('aline:',resultAline);
+//             return calculaImc(antonio.altura, antonio.peso);
+//         })
+//         .then((resultAntonio) => {
+//             console.log('antonio:',resultAntonio)
+//             return calculaImc(maria.altura, maria.peso);
+//         })
+//         .then((resultMaria) => {
+//             console.log('maria',resultMaria)
+//         })
+//         .catch((err) => {
+//             return console.error(err);
+//         })
+// })();
+
+
+
+
+
+// // ASYNC
+// (async () => {
+//     try {
+//         const resultAline = await calculaImc(aline.altura, aline.peso);
+//         console.log('aline:', resultAline);
+//         const resultAntonio = await calculaImc(antonio.altura, antonio.peso);
+//         console.log('antonio', resultAntonio);
+//         const resultMaria = await calculaImc(maria.altura, maria.peso);
+//         console.log('maria:', resultMaria);
+
+//     } catch (error) {
+//         console.error(error.message);
+//     }
+
+// })();
+
+// // async function calculaImc(altura, peso) {
+
+// //     if (altura <= 0 || peso <= 0) {
+// //         throw (new Error('Valor informado deve ser maior que zero'));
+// //     }
+
+// //     const imc = peso / (altura * altura);
+
+// //     return (imc);
+
+
+// // }
+// criar uma constante numeros, 
+//dentro da constante por 3 numeros aleatório de 1 a 9
+// printar numetos maiores que 3
+// printar se existe o 5
+// criar outra constante: 1º constante: maiores
+// na outra constante colocar cinco.
+
+// navegar por listas
+const numeros = [1,5,9];
+const maiores = numeros.filter((numero) =>numero >= 3);
+console.log(maiores);
+
+const cinco = numeros.find((numero) => numero === 2);
+console.log(cinco);
+
+// HOMEWORK: 
+// criar um array chamado pessoas. esse array vai ser de objetos
+// com atributos: nome, idade.
+// criar 2 funções: buscaNome e buscaAdultos.
+// nelas vai passar de parÂmetro pessoas. No buscaNome 2º parâmetro vai ser o 
+// nome que quero procurar.
+// para procurar nome pode usar o find (exemplo: pessoa.nome)
+// para buscar idade usa o filter.
+// procurar exemplos find e filter javaScript.
+// criar 3 pessoas; 1 criança e 2 adultos. 
+
+
 
