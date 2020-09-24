@@ -418,12 +418,13 @@ const maria = {
 // na outra constante colocar cinco.
 
 // navegar por listas
-const numeros = [1,5,9];
-const maiores = numeros.filter((numero) =>numero >= 3);
-console.log(maiores);
+// const numeros = [1,5,9];
+// const maiores = numeros.filter((numero) =>numero >= 3);
+// console.log(maiores);
 
-const cinco = numeros.find((numero) => numero === 2);
-console.log(cinco);
+// const cinco = numeros.find((numero) => numero === 9);
+// console.log(cinco);
+
 
 // HOMEWORK: 
 // criar um array chamado pessoas. esse array vai ser de objetos
@@ -437,4 +438,28 @@ console.log(cinco);
 // criar 3 pessoas; 1 criança e 2 adultos. 
 
 
+
+const pessoas = [
+    {nome:"Maria", idade: 30 }, 
+    {nome:"Joao", idade: 42 },
+    {nome: "Cecília", idade: 5}
+];
+
+
+function buscaNome(pessoas, Maria) {
+    return pessoas.nome === 'Maria';
+} 
+
+console.log(pessoas.find(buscaNome));
+
+
+
+// function buscaAdultos(pessoas) {
+//     return pessoas.idade >= 18;
+// }
+
+
+
+// const adultos = pessoas.filter(buscaAdultos);
+// console.log(adultos);
 
