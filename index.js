@@ -446,12 +446,9 @@ const pessoas = [
 ];
 
 
-
-
-
-// function buscaAdultos(pessoas) {
-//     return pessoas.idade >= 18;
-// }
+function buscaAdultos(pessoas) {
+    return pessoas.idade >= 18;
+}
 
 
 
