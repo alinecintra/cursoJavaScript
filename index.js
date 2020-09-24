@@ -446,11 +446,6 @@ const pessoas = [
 ];
 
 
-function buscaNome(pessoas, Maria) {
-    return pessoas.nome === 'Maria';
-} 
-
-console.log(pessoas.find(buscaNome));
 
 
 
