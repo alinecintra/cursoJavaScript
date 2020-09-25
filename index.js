@@ -1,3 +1,4 @@
+// @ts-check
 // console.log('olá, mundo!')
 // var x = function(x,y) {
 //     return x * y;
@@ -440,18 +441,45 @@ const maria = {
 
 
 const pessoas = [
-    {nome:"Maria", idade: 30 }, 
-    {nome:"Joao", idade: 42 },
-    {nome: "Cecília", idade: 5}
+    {nome:"Maria", idade: 30, profissao: 'dentista' }, 
+    {nome:"Joao", idade: 42, profissao: 'programador' },
+    {nome: "Cecília", idade: 5, profissao: 'barbeira'}
 ];
 
+// function buscaNome(pessoas, nome) {
+//     return pessoas.filter(x => x.nome !== nome)
+// }
+
+// console.log(buscaNome(pessoas, 'Joao'));
+// const nomesFiltrados = buscaNome(pessoas, 'Joao');
+// console.log(JSON.stringify(nomesFiltrados));
+
+
+// function buscaIdade(pessoas, idade) {
+//     return pessoas.filter(x => x.idade !== idade)
+// }
+
+// const pessoasIdades = buscaIdade(pessoas, '42');
+// console.log(JSON.stringify(pessoasIdades));
+
+//filtro de busca programador
+// function buscaProfissoes(pessoas, profissao = 'programador') {
+//     return pessoas.filter(x => x.profissao === profissao );
+// }
+
+// const pessoasProgramadoras = buscaProfissoes(pessoas)
+// const pessoasBarbeiras = buscaProfissoes(pessoas, 'barbeira')
+// console.log(JSON.stringify(pessoasProgramadoras));
+// console.log(JSON.stringify(pessoasBarbeiras));
 
 function buscaAdultos(pessoas) {
-    return pessoas.idade >= 18;
+    return pessoas.filter(x => x.idade >= 18);
 }
 
+const adultos = buscaAdultos(pessoas);
+console.log(JSON.stringify(adultos));
 
 
-// const adultos = pessoas.filter(buscaAdultos);
-// console.log(adultos);
+
+
 
